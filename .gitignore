@@ -1,0 +1,8 @@
+# Project exclude paths
+/out/
+/Shopping_Assignment/MVCShoppingCart/target/
+/AssignmentPRJ/nbproject/private/
+/Shopping_Assignment/ShoppingCart/target/
+/AssignmentPRJ/build/
+/ShoppingCartAssignment/nbproject/private/
+/ShoppingCartAssignment/build/

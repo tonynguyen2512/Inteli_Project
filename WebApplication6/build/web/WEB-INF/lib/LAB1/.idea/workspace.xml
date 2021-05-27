@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d8a69727-c971-4121-a8a0-75e2dac38b48" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1iU4nEoS8S4bZC6WICHZ4JNbj50" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/DemoCSD-1/DemoCSD" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\InteliJ Data\LAB1\src\UTIL" />
+      <recent name="D:\InteliJ Data\LAB1\src\GUI" />
+      <recent name="D:\InteliJ Data\LAB1\src\DTO" />
+      <recent name="D:\InteliJ Data\LAB1\src\DAO" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Tester">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="LAB1" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.Tester" />
+      <module name="LAB1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Tester" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Tester" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d8a69727-c971-4121-a8a0-75e2dac38b48" name="Default Changelist" comment="" />
+      <created>1601949001697</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601949001697</updated>
+      <workItem from="1601949006798" duration="6556000" />
+      <workItem from="1601957296801" duration="909000" />
+      <workItem from="1602030642153" duration="2045000" />
+      <workItem from="1602032733342" duration="1125000" />
+      <workItem from="1602043977334" duration="2907000" />
+      <workItem from="1602073272989" duration="6114000" />
+      <workItem from="1602116690736" duration="8920000" />
+      <workItem from="1602725143189" duration="60000" />
+      <workItem from="1602729424089" duration="36000" />
+      <workItem from="1604971322111" duration="784000" />
+      <workItem from="1604972959785" duration="145000" />
+      <workItem from="1604973126022" duration="604000" />
+      <workItem from="1604978361710" duration="630000" />
+      <workItem from="1604979116771" duration="799000" />
+      <workItem from="1605068440290" duration="114000" />
+      <workItem from="1605140427249" duration="9483000" />
+      <workItem from="1605584447811" duration="300000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="574" y="232" width="568" height="351" key="#Notifications" timestamp="1601957330699">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="574" y="232" width="568" height="351" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1601957330699" />
+    <state x="504" y="58" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog" timestamp="1605141431938">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="504" y="58" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog/0.0.1366.728@0.0.1366.728" timestamp="1605141431938" />
+    <state x="363" y="99" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1602032604381">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="363" y="99" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.728@0.0.1366.728" timestamp="1602032604381" />
+    <state x="443" y="0" key="Diagram.Print.Preview.Dialog" timestamp="1601950822749">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="443" y="0" key="Diagram.Print.Preview.Dialog/0.0.1366.728@0.0.1366.728" timestamp="1601950822749" />
+    <state x="463" y="96" key="FileChooserDialogImpl" timestamp="1605068501904">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="96" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1605068501904" />
+    <state width="1061" height="355" key="GridCell.Tab.0.bottom" timestamp="1605149691718">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1061" height="355" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1605149691718" />
+    <state width="1061" height="355" key="GridCell.Tab.0.center" timestamp="1605149691718">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1061" height="355" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1605149691718" />
+    <state width="1061" height="355" key="GridCell.Tab.0.left" timestamp="1605149691718">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1061" height="355" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1605149691718" />
+    <state width="1061" height="355" key="GridCell.Tab.0.right" timestamp="1605149691718">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1061" height="355" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1605149691718" />
+    <state x="186" y="0" key="SettingsEditor" timestamp="1602085668080">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="186" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1602085668080" />
+    <state x="460" y="208" width="588" height="341" key="cloudConfig.SelfSettingsDialog" timestamp="1602085078730">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="460" y="208" width="588" height="341" key="cloudConfig.SelfSettingsDialog/0.0.1366.728@0.0.1366.728" timestamp="1602085078730" />
+    <state x="274" y="0" key="new project wizard" timestamp="1602725201574">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="274" y="0" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1602725201574" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1602121742896">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1602121742896" />
+    <state x="346" y="49" key="search.everywhere.popup" timestamp="1601949035087">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1601949035087" />
+  </component>
+</project>
