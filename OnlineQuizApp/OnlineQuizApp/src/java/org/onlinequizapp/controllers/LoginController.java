@@ -1,6 +1,8 @@
 package org.onlinequizapp.controllers;
 
+import com.google.common.hash.Hashing;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -12,9 +14,9 @@ import org.onlinequizapp.dtos.UserDTO;
 
 public class LoginController extends HttpServlet {
 
-    private static final String SUCCESS = "admindashboard.html";
-    private static final String Student = "studentdashboard.html";
-    private static final String Teacher = "teacherdashboard.html";
+    private static final String SUCCESS = "dashboardadmin.jsp";
+    private static final String Student = "dashboardstudent.jsp";
+    private static final String Teacher = "dashboardteacher.jsp";
     private static final String ERROR = "login.html";
     private static final String SHOPPING = "index.html";
 
@@ -34,20 +36,36 @@ public class LoginController extends HttpServlet {
         try {
             String userID = request.getParameter("userID");
             String password = request.getParameter("password");
-            UserDAO dao = new UserDAO();
-            UserDTO user = dao.checkLogin(userID, password);
+            String sha256hex = Hashing.sha256().hashString(password, StandardCharsets.UTF_8).toString();
             HttpSession session = request.getSession();
-
+            UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
             if (user != null) {
-                session.setAttribute("LOGIN_USER", user);
                 if (user.getRole().contains("AD")) {
                     url = SUCCESS;
-                } else if (user.getRole().contains("C") || user.getRole().contains("M")) {
+                } else if (user.getRole().contains("T") || user.getRole().contains("T1")) {
                     url = Teacher;
-                } else if (user.getRole().contains("G") || user.getRole().contains("S")) {
+                } else if (user.getRole().contains("S") || user.getRole().contains("S1")) {
                     url = Student;
                 } else {
                     url = SHOPPING;
+                }
+            } else {
+                UserDAO dao = new UserDAO();
+                user=dao.checkLogin(userID, sha256hex);
+                if (user == null) {
+                    user = dao.checkMailLogin(userID, sha256hex);
+                }
+                if (user != null) {
+                    session.setAttribute("LOGIN_USER", user);
+                    if (user.getRole().contains("AD")) {
+                        url = SUCCESS;
+                    } else if (user.getRole().contains("T") || user.getRole().contains("T1")) {
+                        url = Teacher;
+                    } else if (user.getRole().contains("S") || user.getRole().contains("S1")) {
+                        url = Student;
+                    } else {
+                        url = SHOPPING;
+                    }
                 }
             }
             String rememberLogin = request.getParameter("rememberMe");
@@ -56,7 +74,7 @@ public class LoginController extends HttpServlet {
                 Cookie cookieID = new Cookie("USERID", userID);
                 cookieID.setMaxAge(0);
 
-                Cookie cookiePassWord = new Cookie("PASSWORD", password);
+                Cookie cookiePassWord = new Cookie("PASSWORD", sha256hex);
                 cookiePassWord.setMaxAge(0);
 
                 response.addCookie(cookieID);
@@ -66,7 +84,6 @@ public class LoginController extends HttpServlet {
             log("Error at LoginController:" + e.toString());
         } finally {
             response.sendRedirect(url);
-
         }
     }
 

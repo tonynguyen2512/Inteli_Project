@@ -1,15 +1,30 @@
 package org.onlinequizapp.dtos;
 
-import java.io.Serializable;
 
-public class CourseDTO implements Serializable {
+public class CourseDTO {
 
     private String courseID;
     private String courseName;
     private String authorID;
     private String duration;
     private String status;
-   
+    private String categoryID;
+    private String description;
+    
+    
+    public CourseDTO() {
+    }
+
+    public CourseDTO(String courseID, String courseName, String authorID, String duration, String status, String categoryID, String Description) {
+        this.courseID = courseID;
+        this.courseName = courseName;
+        this.authorID = authorID;
+        this.duration = duration;
+        this.status = status;
+        this.categoryID = categoryID;
+        this.description = Description;
+    }
+    
     public CourseDTO(String courseID, String courseName, String authorID, String duration, String status) {
         this.courseID = courseID;
         this.courseName = courseName;
@@ -19,8 +34,6 @@ public class CourseDTO implements Serializable {
         
     }
 
-    public CourseDTO() {
-    }
 
     public void setCourseID(String courseID) {
         this.courseID = courseID;
@@ -52,6 +65,22 @@ public class CourseDTO implements Serializable {
 
     public String getAuthorID() {
         return authorID;
+    }
+
+    public void setCategoryID(String categoryID) {
+        this.categoryID = categoryID;
+    }
+
+    public void setDescription(String Description) {
+        this.description = Description;
+    }
+
+    public String getCategoryID() {
+        return categoryID;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public String getDuration() {

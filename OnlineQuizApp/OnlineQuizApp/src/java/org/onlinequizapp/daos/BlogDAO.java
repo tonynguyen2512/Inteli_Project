@@ -29,7 +29,8 @@ public class BlogDAO {
                     String content = rs.getString("content");
                     String authorID = rs.getString("authorID");
                     String Image = rs.getString("Image");
-                    Blog = new BlogDTO(BlogID, Title, authorID, categoryID, content, Image);
+                    String Status = rs.getString("Status");
+                    Blog = new BlogDTO(BlogID, Title, authorID, categoryID, content, Image, Status);
                 }
             }
         } catch (ClassNotFoundException | SQLException e) {
@@ -49,7 +50,48 @@ public class BlogDAO {
         return Blog;
     }
 
-    public List<BlogDTO> getListBlog (String search) throws SQLException {
+    public BlogDTO checkBlogAuthor(String auID) throws SQLException {
+        BlogDTO Blog = null;
+        Connection conn = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                String sql = "Select BlogID, Title, content, Image, categoryID , authorID, Status  "
+                        + "FROM tblBlog "
+                        + "Where authorID=\'%" + auID + "%\'";
+                stm = conn.prepareStatement(sql);
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    String BlogID = rs.getString("BlogID");
+                    String Title = rs.getString("Title");
+                    String categoryID = rs.getString("categoryID");
+                    String content = rs.getString("content");
+                    String authorID = rs.getString("authorID");
+                    String Image = rs.getString("Image");
+                    String Status = rs.getString("Status");
+                    Blog = new BlogDTO(BlogID, Title, authorID, categoryID, content, Image, Status);
+                }
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+
+        }
+        return Blog;
+    }
+
+    public List<BlogDTO> getListBlog(String search) throws SQLException {
         List<BlogDTO> listBlog = null;
         Connection conn = null;
         PreparedStatement stm = null;
@@ -57,7 +99,7 @@ public class BlogDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                String sql = "Select BlogID, Title, authorID, categoryID , content "
+                String sql = "Select BlogID, Title, content, Image, categoryID , authorID, Status  "
                         + "from tblBlog "
                         + "WHERE Title like ?";
                 stm = conn.prepareStatement(sql);
@@ -65,15 +107,16 @@ public class BlogDAO {
                 rs = stm.executeQuery();
                 while (rs.next()) {
                     String BlogID = rs.getString("BlogID");
-                    String Title = rs.getString("Title");
+                    String title = rs.getString("title");
                     String authorID = rs.getString("authorID");
                     String categoryID = rs.getString("categoryID");
                     String content = rs.getString("content");
                     String Image = rs.getString("Image");
+                    String Status = rs.getString("Status");
                     if (listBlog == null) {
                         listBlog = new ArrayList<>();
                     }
-                    listBlog.add(new BlogDTO(BlogID, Title, authorID, content, categoryID, Image));
+                    listBlog.add(new BlogDTO(BlogID, title, authorID, categoryID, content, Image, Status));
 
                 }
             }
@@ -95,7 +138,7 @@ public class BlogDAO {
         return listBlog;
     }
 
-    public boolean deleteUser(String BlogID) throws SQLException {
+    public boolean deleteBlog(String BlogID) throws SQLException {
         boolean check = false;
         Connection conn = null;
         PreparedStatement stm = null;
@@ -133,14 +176,16 @@ public class BlogDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                String sql = "UPDATE tblBlog SET Title=?, authorID=? "
-                        + " Where BlogID=?";
+                String sql = "UPDATE tblBlog SET  Title=?, content=?, Image=?, categoryID=? , authorID=?, Status=? "
+                        + " Where BlogID=? ";
                 stm = conn.prepareStatement(sql);
-                stm.setString(1, Blog.getBlogID());
-                stm.setString(2, Blog.getAuthorID());
-                stm.setString(3, Blog.getCategoryID());
-                stm.setString(4, Blog.getContent());
-                stm.setString(5, Blog.getImage());
+                stm.setString(1, Blog.getTitle());
+                stm.setString(2, Blog.getContent());
+                stm.setString(3, Blog.getImage());
+                stm.setInt(4, Integer.parseInt(Blog.getCategoryID()));
+                stm.setString(5, Blog.getAuthorID());
+                stm.setByte(6, (byte) Integer.parseInt(Blog.getStatus()));
+                stm.setInt(7, Integer.parseInt(Blog.getBlogID()));
                 check = stm.executeUpdate() > 0 ? true : false;
             }
 
@@ -197,15 +242,16 @@ public class BlogDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                String sql = "INSERT INTO tblBlog(BlogID, Title, authorID, categoryID, content, Image) "
-                        + " VALUES(\'?\',\'?\',\'?\',\'?\',\'?\',\'?\')";
+                String sql = "INSERT INTO tblBlog( Title, authorID, categoryID, content, Image, Status) "
+                        + "VALUES(?,?,?,?,?,?) ";
                 stm = conn.prepareStatement(sql);
-                stm.setString(1, Blog.getBlogID());
+                stm.setString(1, Blog.getTitle());
                 stm.setString(2, Blog.getAuthorID());
-                stm.setString(3, Blog.getCategoryID());
+                stm.setInt(3, Integer.parseInt(Blog.getCategoryID()));
                 stm.setString(4, Blog.getContent());
-                stm.setString(5, Blog.getTitle());
-                stm.setString(6, Blog.getImage());
+                stm.setString(5, Blog.getImage());
+                stm.setByte(6, (byte) Integer.parseInt(Blog.getStatus()));
+                stm.executeQuery();
             }
         } catch (Exception e) {
 

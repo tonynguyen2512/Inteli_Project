@@ -25,10 +25,10 @@ import org.onlinequizapp.dtos.UserDTO;
  *
  * @author User-PC
  */
-@WebFilter(filterName = "AuthenFilter", urlPatterns = {"/search.jsp"})
+@WebFilter(filterName = "AuthenFilter", urlPatterns = {"/admindashboard.html"})
 public class AuthenFilter implements Filter {
 
-    private static final String lOGIN = "login.jsp";
+    private static final String lOGIN = "login.html";
     private static final boolean debug = true;
 
     // The filter configuration object we are associated with.  If
@@ -104,7 +104,6 @@ public class AuthenFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        chain.doFilter(request, response);
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession();

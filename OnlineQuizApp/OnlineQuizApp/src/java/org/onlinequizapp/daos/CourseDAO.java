@@ -48,7 +48,7 @@ public class CourseDAO {
         return course;
     }
 
-    public List<CourseDTO> getListCourse (String search) throws SQLException {
+    public List<CourseDTO> getListCourse(String search) throws SQLException {
         List<CourseDTO> listCourse = null;
         Connection conn = null;
         PreparedStatement stm = null;
@@ -56,22 +56,24 @@ public class CourseDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                String sql = "Select courseID, courseName, authorID, duration , status "
+                String sql = "Select courseID, authorID, duration , status, categoryID, Name, Description "
                         + "from tblCourse "
-                        + "WHERE courseName like ?";
+                        + "WHERE name like ?";
                 stm = conn.prepareStatement(sql);
                 stm.setString(1, "%" + search + "%");
                 rs = stm.executeQuery();
                 while (rs.next()) {
                     String courseID = rs.getString("courseID");
-                    String courseName = rs.getString("courseName");
+                    String courseName = rs.getString("Name");
                     String authorID = rs.getString("authorID");
                     String duration = rs.getString("duration");
                     String status = rs.getString("status");
+                    String cate = rs.getString("categoryID");
+                    String description = rs.getString("Description");
                     if (listCourse == null) {
                         listCourse = new ArrayList<>();
                     }
-                    listCourse.add(new CourseDTO(courseID, courseName, authorID, status, duration));
+                    listCourse.add(new CourseDTO(courseID, courseName, authorID, duration, status, cate, description));
 
                 }
             }
@@ -93,7 +95,7 @@ public class CourseDAO {
         return listCourse;
     }
 
-    public boolean deleteUser(String courseID) throws SQLException {
+    public boolean delete(String courseID) throws SQLException {
         boolean check = false;
         Connection conn = null;
         PreparedStatement stm = null;
@@ -131,13 +133,16 @@ public class CourseDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                String sql = "UPDATE tblCourse SET courseName=?, authorID=? "
+                String sql = "UPDATE tblCourse SET Name=?, authorID=?, duration=?, status=?, categoryID=?, description=?  "
                         + " Where courseID=?";
                 stm = conn.prepareStatement(sql);
-                stm.setString(1, course.getCourseID());
+                stm.setString(1, course.getCourseName());
                 stm.setString(2, course.getAuthorID());
                 stm.setString(3, course.getDuration());
-                stm.setString(4, course.getStatus());
+                stm.setByte(4, (byte) Integer.parseInt(course.getStatus()));
+                stm.setInt(5, Integer.parseInt(course.getCategoryID()));
+                stm.setString(6, course.getDescription());
+                stm.setInt(7, Integer.parseInt(course.getCourseID()));
                 check = stm.executeUpdate() > 0 ? true : false;
             }
 
@@ -194,14 +199,17 @@ public class CourseDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                String sql = "INSERT INTO tblCourse(courseID, courseName, authorID, duration, status) "
-                        + " VALUES(\'?\',\'?\',\'?\',\'?\',\'?\')";
+                String sql = "INSERT INTO tblCourse( AuthorID, duration, status, categoryID, Name, Description) "
+                        + " VALUES(?,?,?,?,?,?)";
                 stm = conn.prepareStatement(sql);
-                stm.setString(1, course.getCourseID());
-                stm.setString(2, course.getAuthorID());
-                stm.setString(3, course.getDuration());
-                stm.setString(4, course.getStatus());
+                stm.setString(1, course.getAuthorID());
+                stm.setString(2, course.getDuration());
+                stm.setByte(3, (byte) Integer.parseInt(course.getStatus()));
+                stm.setInt(4, Integer.parseInt(course.getCategoryID()));
                 stm.setString(5, course.getCourseName());
+                stm.setString(6, course.getDescription());
+                stm.executeUpdate();
+
             }
         } catch (Exception e) {
 
@@ -221,15 +229,16 @@ public class CourseDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                String sql = "INSERT INTO tblCourse(courseID, courseName, authorID, duration, status) "
-                        + " VALUES(?,?,?,?,?)";
+                String sql = "INSERT INTO tblCourse( AuthorID, duration, status, categoryID, Name, Description) "
+                        + " VALUES(?,?,?,?,?,?)";
                 stm = conn.prepareStatement(sql);
-                stm.setString(1, course.getCourseID());
-                stm.setString(2, course.getAuthorID());
-                stm.setString(3, course.getDuration());
-                stm.setString(4, course.getStatus());
+                stm.setString(1, course.getAuthorID());
+                stm.setString(2, course.getDuration());
+                stm.setByte(3, (byte) Integer.parseInt(course.getStatus()));
+                stm.setString(4, course.getCategoryID());
                 stm.setString(5, course.getCourseName());
-                stm.executeUpdate();
+                stm.setString(6, course.getDescription());
+                stm.executeQuery();
             }
         } finally {
             if (stm != null) {
